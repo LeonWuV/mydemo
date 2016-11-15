@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#box{position: relative;height: 40px;}
+			.list{list-style: none;}
+			li{float: left;width: 100px;height: 40px;line-height: 40px;text-align: center;}
+			span{width: 100px;height: 2px;background: red;position: absolute;top: 30px;left: 0;}
+		</style>
+		<script src="jquery-1.12.3.min.js"></script>
+		<script>
+			$(function(){
+				$('.list>li').on('mouseover',function(){
+					//stop  停止之前没完成的动画 ，执行下一个动画；
+					$(this).parent().next().stop().animate({
+						'left':$(this).index() * $(this).width()
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul class="list">
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+				<li>第四个</li>
+				<li>第五个</li>
+			</ul>
+			<span></span>
+		</div>
+		<div id="box">
+			<ul class="list">
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+				<li>第四个</li>
+				<li>第五个</li>
+			</ul>
+			<span></span>
+		</div>
+		<div id="box">
+			<ul class="list">
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+				<li>第四个</li>
+				<li>第五个</li>
+			</ul>
+			<span></span>
+		</div>
+		<div id="box">
+			<ul class="list">
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+				<li>第四个</li>
+				<li>第五个</li>
+			</ul>
+			<span></span>
+		</div>
+		<div id="box">
+			<ul class="list">
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+				<li>第四个</li>
+				<li>第五个</li>
+			</ul>
+			<span></span>
+		</div>
+	</body>
+</html>

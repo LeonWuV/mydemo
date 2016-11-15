@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500">sorry</canvas>
+	</body>
+	<script type="text/javascript">
+		var myCanvas = document.getElementById("myCanvas");
+		var ctx = myCanvas.getContext('2d');
+		
+		//描空心文字
+//		ctx.font = 'italic 50px 黑体';
+//		ctx.strokeStyle = 'red';
+//		ctx.strokeText('帅',100,100);
+		
+		//实心文字
+		ctx.font = '50px 微软雅黑';
+		ctx.strokeStyle = 'red';
+		ctx.fillText('帅',100,100);
+		
+	</script>
+</html>

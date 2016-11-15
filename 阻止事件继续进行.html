@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阻止冒泡，取消事件的默认行为</title>
+		<style type="text/css">
+			.box1{
+				background:url(img/pic1.jpg) no-repeat center center ;
+				background-size: 100%;
+				height: 200px;
+				width: 600px;
+				margin: 0 auto 50px;
+				position: relative;
+			}
+			.box1 a{
+				display: block;
+				height: 50%;
+				width: 50%;
+				background: red;
+				margin: 0 auto;
+			}
+			.sp1{
+				display: block;
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				right: 0;
+				top: 0;
+				background: black;
+				cursor: pointer;
+				color: white;
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+			}
+			.box2{
+				background:url(img/pic1.jpg) no-repeat center center ;
+				background-size: 100%;
+				height: 200px;
+				width: 600px;
+				margin: 0 auto 50px;
+				position: relative;
+			}
+			.box2 a{
+				display: block;
+				height: 100%;
+				width: 100%;
+			}
+			.sp2{
+				display: block;
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				right: 0;
+				top: 0;
+				background: black;
+				cursor: pointer;
+				color: white;
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+			}
+		</style>
+		<script src="flop/js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--阻止事件冒泡，取消事件的默认行为，-->
+		<!--
+			
+		event.stopPropagation();
+		和event.preventDefault();
+		和return false;
+		-->
+		<p class="p1">不阻止事件冒泡和默认事件</p>
+		<div class="box1">
+			<span class="sp1">X</span>
+			<a href="http://www.baidu.com" target="_blank"></a>
+		</div>
+		
+		
+		<!--分割线-->
+		<p class="p2">阻止事件的冒泡和默认事件</p>		
+		<div class="box2">
+			<span class="sp2">X</span>
+			<a href="http://www.baidu.com"></a>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$(".sp1").click(function(event){
+				//删除父元素
+				$(this).parent().hide(2000);
+//				$(this).parent().remove();
+//				$(this).parent().empty()
+				
+				return false;
+//				event.preventDefault();
+//				event.stopPropagation()
+				
+			});
+			//删除父元素
+			$(".sp2").click(function(event){
+//				$(this).parent().hide(2000);
+				$(this).parent().remove();
+//				$(this).parent().empty()
+				
+				return false;
+//				event.preventDefault();
+//				event.stopPropagation()
+				
+			});
+			
+			//不阻止事件冒泡
+			
+			$(".box1").click(function(){
+				console.log("1")//不阻止事件冒泡会打印1;				
+			});
+			
+			
+			//阻止冒泡
+			$(".box1 a").click(function(event){
+//				event.stopPropagation();//不会打印1			
+			//阻止默认事件
+				event.preventDefault();//不会跳转
+			//直接return false；
+//				return false;  //不会冒泡也不会跳转
+			});
+			
+			
+		});
+	</script>
+</html>

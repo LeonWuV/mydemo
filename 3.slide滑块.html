@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#box{width: 200px;height: 200px;background: red;}
+			.toggle{
+				cursor: pointer;
+			}
+			.show1{
+				height: 200px;
+				width: 200px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<p class="toggle">开关</p>
+		<p class="show1"></p>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$('#box').slideUp(2000,'easeInOutBounce',function(){
+				$('#box').slideDown(2000);
+			});
+			
+			//slide跟show/hide一样,也有一个开关的方法.叫做slideToggle()
+			//用法一样,通过一个事件触发来回切换效果
+			
+			
+			$(".toggle").click(function(){
+				$(".show1").slideToggle(2000,function(){
+					console.log("ssss");
+				})
+			})
+		});
+		
+		
+		
+		
+	</script>
+</html>

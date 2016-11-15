@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body >
+	
+</body>
+	<script type="text/javascript">
+		(function(){
+		console.log(this)
+			console.log("1213".replace('1',"x"));
+		})();
+		$.ajax({
+			url: '/path/to/file',
+			type: 'default GET (Other values: POST)',
+			dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+			data: {param1: 'value1'},
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+		
+		
+
+	</script>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<div id="container">
+			<div class="tab_bar">
+				<div class="add">
+					<div class="add_in">+</div>
+				</div>
+			</div>
+			
+			<div class="mask">
+				<div class="bounce_box">
+					<figure class="bounce">
+						<figcaption class="icon1"></figcaption>
+						<p class="text">拍照</p>
+					</figure>
+					<figure class="bounce">
+						<figcaption class="icon2"></figcaption>
+						<p class="text">相册</p>
+					</figure>
+					<figure class="bounce">
+						<figcaption class="icon3"></figcaption>
+						<p class="text">视频</p>
+					</figure>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		document.documentElement.style.fontSize = innerWidth/7.5 + "px";
+		window.onresize = function() {
+			document.documentElement.style.fontSize = innerWidth/7.5 + "px";
+		}
+	</script>
+	<script src="js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			var tag = true;
+			$('.add').on('click',function(){
+				if(tag){
+					//蒙版出现
+					$('.mask').css('display','block');
+					//add按钮旋转的动画
+					$('.add').css({'transform':'rotateZ(45deg)'})
+					//第一个图标弹出
+					$('.icon1').animate({'left':0,'top':0,'opacity':1},100);
+					//第二个图标延迟100毫秒弹出
+					setTimeout(function(){$('.icon2').animate({'left':0,'top':0,'opacity':1},100);},100);
+					//第三个图标延迟200毫秒弹出
+					setTimeout(function(){$('.icon3').animate({'left':0,'top':0,'opacity':1},100);},200);
+					//让文字出现
+					$('.text').fadeIn(1000);
+				}else{
+					//add按钮旋转的动画
+					$('.add').css({'transform':'rotateZ(0)'});
+					//第一个图标消失
+					setTimeout(function(){$('.icon1').animate({'left':'2.28rem','top':'2.38rem','opacity':0},100);},200);
+					//第二个图标消失
+					setTimeout(function(){$('.icon2').animate({'left':0,'top':'2.38rem','opacity':0},100);},100);
+					//第三个图标消失
+					$('.icon3').animate({'left':'-2.28rem','top':'2.38rem','opacity':0},100);
+					//让文字消失
+					$('.text').fadeOut(400);
+					//让蒙版过一会再消失
+					setTimeout(function(){
+						$('.mask').css('display','none');
+					},600);
+				}
+				tag = !tag;
+			})
+		})
+	</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap{width: 200px;height: 200px;border: 10px solid black;border-radius: 50%;position: relative;}
+			#kedu{width: 200px;height: 200px;position: relative;}
+			#kedu div{width: 20px;height: 100px;position: absolute;
+				transform-origin: bottom center;
+			}
+			span{display: block;text-align: center;}
+			#hour{width: 8px;height: 50px;background: black;position: absolute;left:100px;top: 50px;
+			transform-origin: bottom center;}
+			#min{width: 6px;height: 70px;background: cyan;position: absolute;left:100px;top: 30px;
+			transform-origin: bottom center;}
+			#second{width: 4px;height: 90px;background: pink;position: absolute;left:100px;top: 10px;
+			transform-origin: bottom center;}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="kedu">
+				<div><span>12</span></div>
+				<div><span>1</span></div>
+				<div><span>2</span></div>
+				<div><span>3</span></div>
+				<div><span>4</span></div>
+				<div><span>5</span></div>
+				<div><span>6</span></div>
+				<div><span>7</span></div>
+				<div><span>8</span></div>
+				<div><span>9</span></div>
+				<div><span>10</span></div>
+				<div><span>11</span></div>
+			</div>
+			<div id="hour"></div>
+			<div id="min"></div>
+			<div id="second"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var kedu = document.getElementById('kedu');
+		var kedus = kedu.getElementsByTagName('div');
+		var spans = document.querySelectorAll('span');
+		var hourDiv = document.getElementById('hour');
+		var minDiv = document.getElementById('min');
+		var secondDiv = document.getElementById('second');
+		for (var i = 0; i < kedus.length; i++) {
+			kedus[i].style.transform = 'translateX(90px) rotateZ('+ i*30 +'deg)';
+			spans[i].style.transform = 'rotateZ('+ -i*30 +'deg)';
+		}
+		
+		function setPointers(){
+			//获取当前的小时
+			var newDate = new Date();
+			var hour = newDate.getHours()%12;
+			var min = newDate.getMinutes();
+			hourDiv.style.transform = 'rotateZ('+ (hour*30+min*0.5)  +'deg)';
+			
+			//获取当前的分钟设置给指针
+			minDiv.style.transform = 'rotateZ('+ min*6 +'deg)';
+			
+			//获取当前的秒数设置给指针
+			var second = newDate.getSeconds();
+			secondDiv.style.transform = 'rotateZ('+ second*6 +'deg)';
+		}
+		setPointers();
+		
+		
+		setInterval(function(){
+			setPointers();
+		},1000);
+		
+		
+	</script>
+</html>

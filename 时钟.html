@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<tite></title>
+		<style type="text/css">
+			#myCanvas{
+				border: 1px solid cyan;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		var my = document.getElementById("myCanvas");
+		var pen = my.getContext('2d');
+		var deg = Math.PI/180;
+		pen.translate(250,250);
+		
+		
+		
+		
+		
+		setInterval(function(){
+			pen.clearRect(-250,-250,500,500);
+			
+			//画园盘
+			pen.beginPath();
+			pen.arc(0,0,250,0,Math.PI*2,true);
+			pen.fillStyle = 'black';
+			pen.fill();
+			pen.closePath();
+			
+			
+			//画小刻度
+		for (var i = 0; i < 60; i++) {
+			pen.beginPath();
+			pen.rotate(6*deg);
+			pen.moveTo(225,0);
+			pen.lineTo(245,0);
+			pen.lineWidth = '5';
+			pen.strokeStyle = 'cadetblue';
+			pen.fill();
+			pen.stroke();
+			pen.closePath();
+			
+		}
+		
+		//画大刻度
+		for (var i = 0; i < 12; i++) {
+			pen.beginPath();
+			pen.rotate(30*deg);
+			pen.moveTo(200,0);
+			pen.lineTo(245,0);
+			pen.lineWidth = '10';
+			pen.strokeStyle = 'white';
+			pen.fill();
+			pen.stroke();
+			pen.closePath();
+			
+		}
+		
+		
+		
+		
+		var time = new Date();
+		var second = time.getSeconds();
+		var min = time.getMinutes();
+		var h = time.getHours();
+		
+		//时针
+		pen.save();
+		pen.beginPath();
+		pen.rotate(h*deg*30 + min*deg*0.5);
+		pen.moveTo(0,25);
+		pen.lineTo(9,0)
+		pen.lineTo(0,-120)
+		pen.lineTo(-9,0)
+		pen.lineWidth = '1';		
+		pen.strokeStyle = '#00FFFF';
+		pen.fillStyle = 'deepskyblue';
+		pen.fill();
+		pen.stroke();
+		pen.closePath();
+		pen.restore();
+		
+		//分针
+		pen.save();
+		pen.beginPath();
+		pen.rotate(min*deg*6 + second*deg*0.1);
+		pen.moveTo(0,25);
+		pen.lineTo(7,0)
+		pen.lineTo(0,-160)
+		pen.lineTo(-7,0)
+		pen.lineWidth = '1';		
+		pen.strokeStyle = 'deeppink';
+		pen.fillStyle = 'red';
+		pen.fill();
+		pen.stroke();
+		pen.closePath();
+		pen.restore();
+		
+		//秒针
+		pen.save()
+		pen.beginPath();
+		pen.rotate(second*deg*6);
+		pen.moveTo(0,25);
+		pen.lineTo(0,-180);
+		pen.lineCap = 'round'
+		pen.lineWidth = '5';		
+		pen.strokeStyle = 'yellow';
+		pen.stroke();
+		pen.closePath();
+		pen.restore()
+		
+		pen.arc(0,0,7,0,360*deg,true)
+		pen.fillStyle = 'yellowgreen';
+		pen.fill();
+		},1000)
+	</script>
+</html>
